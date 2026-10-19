@@ -35,6 +35,7 @@ export const IMAGES = {
   night: asset('photos/venue.webp'),
   family: asset('photos/catch-pile.webp'),
   ocean: asset('photos/fishing-boat.webp'),
+  promo: asset('photos/seafood-boat-promo.jpg'),
 }
 
 export function img(src: string, w: number) {
@@ -408,6 +409,21 @@ export const copy = {
   ],
   featuredKicker: { en: 'On the table', fr: 'À table' },
   featuredTitle: { en: 'A menu that follows the tide', fr: 'Une carte qui suit la marée' },
+  promo: {
+    kicker: { en: 'On the table', fr: 'À table' },
+    offer: { en: 'Order a seafood boat, get a free burger', fr: 'Un bateau, un burger offert' },
+    body: {
+      en: 'Share the house boat and a fish burger is on us. Ask for the offer when you sit down.',
+      fr: 'Partagez le bateau signature, le fish burger est offert. Demandez l’offre à table.',
+    },
+    cta: { en: 'See the boat on the menu', fr: 'Voir le bateau sur la carte' },
+    close: { en: 'Close offer', fr: 'Fermer l’offre' },
+    badge: { en: 'Free burger', fr: 'Burger offert' },
+    alt: {
+      en: 'Order a Seafood Boat, get a free burger at Lakaaz Lamer',
+      fr: 'Commandez un bateau de fruits de mer, un burger offert chez Lakaaz Lamer',
+    },
+  },
   featured: [
     {
       image: 'tuna',

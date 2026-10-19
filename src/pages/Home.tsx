@@ -1,13 +1,50 @@
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ADDRESS, copy, IMAGES, MAPS_URL, PHONE, PHONE_TEL, img } from '../data/content'
 import { useLang } from '../context/Language'
 import { asset } from '../lib/asset'
 import { getVenueStatus } from '../lib/hours'
+import { PromoPopup, PROMO_STORAGE_KEY } from '../components/PromoPopup'
 import { Reveal } from '../components/Reveal'
 
 export function Home() {
   const { t } = useLang()
   const status = getVenueStatus()
+  const tableRef = useRef<HTMLElement>(null)
+  const [promoOpen, setPromoOpen] = useState(false)
+
+  const closePromo = useCallback(() => {
+    setPromoOpen(false)
+    try {
+      sessionStorage.setItem(PROMO_STORAGE_KEY, '1')
+    } catch {
+      /* ignore */
+    }
+  }, [])
+
+  useEffect(() => {
+    try {
+      if (sessionStorage.getItem(PROMO_STORAGE_KEY)) return
+    } catch {
+      /* ignore */
+    }
+    const el = tableRef.current
+    if (!el) return
+    let timer = 0
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return
+        timer = window.setTimeout(() => setPromoOpen(true), 650)
+        io.disconnect()
+      },
+      { threshold: 0.28 },
+    )
+    io.observe(el)
+    return () => {
+      io.disconnect()
+      window.clearTimeout(timer)
+    }
+  }, [])
 
   return (
     <main>
@@ -84,7 +121,7 @@ export function Home() {
         </div>
       </section>
 
-      <section className="section section--sand">
+      <section ref={tableRef} id="on-the-table" className="section section--sand">
         <div className="wrap">
           <Reveal>
             <p className="kicker">{t(copy.featuredKicker)}</p>
@@ -93,18 +130,25 @@ export function Home() {
           <div className="feature-grid">
             {copy.featured.map((dish, i) => (
               <Reveal key={dish.name.en} delay={i * 90}>
-                <Link to="/menu" className="dish-card">
-                  <img
-                    src={img(IMAGES[dish.image], 1100)}
-                    alt={t(dish.name)}
-                    style={dish.image === 'platter' ? { objectPosition: '50% 70%' } : undefined}
-                  />
-                  <div>
-                    <small>{t(dish.meta)}</small>
-                    <h3>{t(dish.name)}</h3>
-                    <p>{t(dish.desc)}</p>
-                  </div>
-                </Link>
+                <article className={`dish-card${dish.image === 'platter' ? ' dish-card--offer' : ''}`}>
+                  {dish.image === 'platter' ? (
+                    <button type="button" className="dish-card__badge" onClick={() => setPromoOpen(true)}>
+                      {t(copy.promo.badge)}
+                    </button>
+                  ) : null}
+                  <Link to="/menu">
+                    <img
+                      src={img(IMAGES[dish.image], 1100)}
+                      alt={t(dish.name)}
+                      style={dish.image === 'platter' ? { objectPosition: '50% 70%' } : undefined}
+                    />
+                    <div>
+                      <small>{t(dish.meta)}</small>
+                      <h3>{t(dish.name)}</h3>
+                      <p>{t(dish.desc)}</p>
+                    </div>
+                  </Link>
+                </article>
               </Reveal>
             ))}
           </div>
@@ -159,6 +203,7 @@ export function Home() {
           </div>
         </Reveal>
       </section>
+      <PromoPopup open={promoOpen} onClose={closePromo} />
     </main>
   )
 }
