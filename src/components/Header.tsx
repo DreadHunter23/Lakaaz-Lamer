@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
 import { copy, PHONE_TEL } from '../data/content'
 import { useLang } from '../context/Language'
+import { asset } from '../lib/asset'
 import { Logo } from './Logo'
 
 const links = [
@@ -30,7 +31,10 @@ export function Header() {
   }, [])
 
   return (
-    <header className={`site-header${scrolled || open ? ' is-solid' : ''}${open ? ' is-open' : ''}`}>
+    <header
+      className={`site-header${scrolled || open ? ' is-solid' : ''}${open ? ' is-open' : ''}`}
+      style={{ ['--header-waves' as string]: `url("${asset('brand/pattern-waves.png')}")` }}
+    >
       <div className="site-header__bar">
         <Logo variant="gold" />
         <nav className="nav-desktop" aria-label="Primary">

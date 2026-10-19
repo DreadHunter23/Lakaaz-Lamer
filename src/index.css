@@ -154,10 +154,22 @@ p { margin: 0; }
   color: var(--cream);
   transition: box-shadow 0.25s ease;
 }
+.site-header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--header-waves, url('/brand/pattern-waves.png')) 0 0 / 480px repeat;
+  opacity: 0.42;
+  mix-blend-mode: soft-light;
+  pointer-events: none;
+  animation: wave-drift 48s linear infinite;
+}
 .site-header.is-solid {
   box-shadow: 0 10px 28px rgba(8, 20, 28, 0.28);
 }
 .site-header__bar {
+  position: relative;
+  z-index: 1;
   width: min(1180px, calc(100% - 40px));
   margin: 0 auto;
   min-height: var(--header-h);
@@ -220,11 +232,13 @@ p { margin: 0; }
 .menu-toggle span:first-child { top: 16px; }
 .menu-toggle span:last-child { bottom: 16px; }
 .nav-mobile {
+  position: relative;
+  z-index: 1;
   display: none;
   flex-direction: column;
   gap: 14px;
   padding: 8px 20px 24px;
-  background: var(--deep);
+  background: transparent;
   color: var(--cream);
 }
 .nav-mobile a { color: var(--sand); }
