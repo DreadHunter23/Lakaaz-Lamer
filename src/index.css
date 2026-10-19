@@ -599,7 +599,30 @@ p { margin: 0; }
 .site-footer a, .site-footer p { display: block; color: rgba(244,232,196,0.78); margin: 6px 0; }
 .site-footer a { transition: color 0.2s ease; }
 .site-footer a:hover { color: var(--gold); }
-.socials { display: flex; gap: 14px; margin-top: 12px; }
+.socials {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 16px;
+}
+.socials a {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  margin: 0;
+  border: 1px solid rgba(240, 226, 196, 0.28);
+  border-radius: 50%;
+  color: var(--sand);
+  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.2s ease;
+}
+.socials a:hover {
+  color: var(--navy);
+  background: var(--gold);
+  border-color: var(--gold);
+  transform: translateY(-2px);
+}
+.socials svg { width: 18px; height: 18px; display: block; }
 .footer-bottom {
   position: relative;
   margin-top: 40px;
