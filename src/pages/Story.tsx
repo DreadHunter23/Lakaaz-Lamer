@@ -18,7 +18,7 @@ export function Story() {
         </div>
         <div className="wrap split">
           <Reveal>
-            <img className="story-photo" src={IMAGES.shop} alt="The fish counter at Lakaaz Lamer" />
+            <img className="story-photo" src={IMAGES.market} alt="The day’s catch from Gian & Sons" />
           </Reveal>
           <Reveal delay={90}>
             <p className="kicker">Gian & Sons</p>

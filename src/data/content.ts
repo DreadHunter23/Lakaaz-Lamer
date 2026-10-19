@@ -15,40 +15,26 @@ export const INSTAGRAM = 'https://www.instagram.com/lakaazlamer/'
 export const FACEBOOK = 'https://www.facebook.com/lakaazlamerrestaurant/'
 export const TIKTOK = 'https://www.tiktok.com/@lakaazlamer'
 
-const photo = (id: string, w = 1600) =>
-  `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=80`
-
-const local = {
+export const IMAGES = {
   platter: asset('photos/seafood-boat-platter.webp'),
   venue: asset('photos/venue.webp'),
   shop: asset('photos/fish-shop.webp'),
-}
-
-export const IMAGES = {
-  hero: local.platter,
-  grill: photo('photo-1519708227418-c8fd9a32b7a2', 1800),
-  platter: local.platter,
-  prawns: photo('photo-1625943553852-781c6dd46faa', 1400),
-  oysters: photo('photo-1534080564583-6be75777b70a', 1400),
-  tuna: photo('photo-1579584425555-c3ce17fd4351', 1400),
-  interior: local.venue,
-  dining: local.venue,
-  ocean: photo('photo-1507525428034-b723cf961d3e', 1800),
-  market: local.shop,
-  ice: local.shop,
-  shop: local.shop,
-  venue: local.venue,
-  chef: photo('photo-1577219491135-ce391730fb2c', 1400),
-  pasta: photo('photo-1621996346565-e3dbc646d9a9', 1400),
-  dessert: photo('photo-1470124182917-cc6e71b22ecc', 1400),
-  cocktail: photo('photo-1536935338788-846bb9981813', 1400),
-  lobster: photo('photo-1519708227418-c8fd9a32b7a2', 1400),
-  calamari: photo('photo-1599487488170-d11ec9c172f0', 1400),
-  salad: photo('photo-1512621776951-a57141f2eefd', 1400),
-  family: local.venue,
-  boat: photo('photo-1468581264429-2548ef9eb732', 1800),
-  night: local.venue,
-  terrace: photo('photo-1559339352-11d035aa65de', 1600),
+  tuna: asset('photos/tuna-tartare.webp'),
+  grill: asset('photos/grilled-fish.webp'),
+  prawns: asset('photos/fried-prawns.webp'),
+  ice: asset('photos/fish-on-ice.webp'),
+  market: asset('photos/catch-pile.webp'),
+  chef: asset('photos/oven-fish.webp'),
+  boat: asset('photos/fishing-boat.webp'),
+  dining: asset('photos/table-setting.webp'),
+  seared: asset('photos/seared-tuna.webp'),
+  grillTable: asset('photos/grilled-fish-table.webp'),
+  grillPlatter: asset('photos/grilled-fish-platter.webp'),
+  hero: asset('photos/seafood-boat-platter.webp'),
+  interior: asset('photos/table-setting.webp'),
+  night: asset('photos/venue.webp'),
+  family: asset('photos/catch-pile.webp'),
+  ocean: asset('photos/fishing-boat.webp'),
 }
 
 export function img(src: string, w: number) {
@@ -591,15 +577,17 @@ export const copy = {
 
 export const GALLERY = [
   { src: IMAGES.platter, alt: 'Seafood boat platter at the table', cat: 'dishes' },
-  { src: IMAGES.shop, alt: 'Daily catch on ice at the fish counter', cat: 'shop' },
+  { src: IMAGES.grill, alt: 'Whole grilled fish with lemon', cat: 'dishes' },
+  { src: IMAGES.grillPlatter, alt: 'Grilled fish with salad', cat: 'dishes' },
+  { src: IMAGES.grillTable, alt: 'Grilled fish served with fries', cat: 'dishes' },
+  { src: IMAGES.tuna, alt: 'Fresh tuna tartare', cat: 'dishes' },
+  { src: IMAGES.seared, alt: 'Sesame-crusted seared tuna', cat: 'dishes' },
+  { src: IMAGES.prawns, alt: 'Crispy prawns', cat: 'dishes' },
+  { src: IMAGES.shop, alt: 'Daily catch at the fish counter', cat: 'shop' },
+  { src: IMAGES.ice, alt: 'Red snapper on ice', cat: 'shop' },
+  { src: IMAGES.market, alt: 'The day’s catch at Gian & Sons', cat: 'shop' },
+  { src: IMAGES.boat, alt: 'Landing fish at sea', cat: 'shop' },
+  { src: IMAGES.chef, alt: 'Fish roasting in the kitchen oven', cat: 'venue' },
   { src: IMAGES.venue, alt: 'The dining room at Lakaaz Lamer', cat: 'venue' },
-  { src: IMAGES.grill, alt: 'Fish off the grill', cat: 'dishes' },
-  { src: IMAGES.prawns, alt: 'Garlic prawns', cat: 'dishes' },
-  { src: IMAGES.oysters, alt: 'Oysters and lemon', cat: 'shop' },
-  { src: IMAGES.tuna, alt: 'Tuna', cat: 'dishes' },
-  { src: IMAGES.calamari, alt: 'Calamari', cat: 'dishes' },
-  { src: IMAGES.chef, alt: 'The kitchen', cat: 'venue' },
-  { src: IMAGES.cocktail, alt: 'House drinks', cat: 'dishes' },
-  { src: IMAGES.dessert, alt: 'Dessert', cat: 'dishes' },
-  { src: IMAGES.pasta, alt: 'Pasta', cat: 'dishes' },
+  { src: IMAGES.dining, alt: 'A table set for dinner', cat: 'venue' },
 ] as const

@@ -115,7 +115,7 @@ export function Home() {
         <div className="wrap split split--reverse">
           <Reveal>
             <div className="tall-photo">
-              <img src={IMAGES.shop} alt="The fish shop at Lakaaz Lamer" />
+              <img src={IMAGES.boat} alt="Landing the catch with Gian & Sons" />
             </div>
           </Reveal>
           <Reveal delay={100}>
