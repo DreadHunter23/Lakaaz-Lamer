@@ -1,3 +1,5 @@
+import { asset } from '../lib/asset'
+
 export type Lang = 'en' | 'fr'
 
 export const PHONE = '+230 5941 8059'
@@ -16,18 +18,26 @@ export const TIKTOK = 'https://www.tiktok.com/@lakaazlamer'
 const photo = (id: string, w = 1600) =>
   `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=80`
 
+const local = {
+  platter: asset('photos/seafood-boat-platter.webp'),
+  venue: asset('photos/venue.webp'),
+  shop: asset('photos/fish-shop.webp'),
+}
+
 export const IMAGES = {
-  hero: photo('photo-1519708227418-c8fd9a32b7a2', 2200),
+  hero: local.platter,
   grill: photo('photo-1519708227418-c8fd9a32b7a2', 1800),
-  platter: photo('photo-1615141982883-c7ad0e69fd62', 1800),
+  platter: local.platter,
   prawns: photo('photo-1625943553852-781c6dd46faa', 1400),
   oysters: photo('photo-1534080564583-6be75777b70a', 1400),
   tuna: photo('photo-1579584425555-c3ce17fd4351', 1400),
-  interior: photo('photo-1414235077428-338989a2e8c0', 1800),
-  dining: photo('photo-1517248135467-4c7edcad34c4', 1800),
+  interior: local.venue,
+  dining: local.venue,
   ocean: photo('photo-1507525428034-b723cf961d3e', 1800),
-  market: photo('photo-1498654896293-37aacf113fd9', 1400),
-  ice: photo('photo-1534080564583-6be75777b70a', 1400),
+  market: local.shop,
+  ice: local.shop,
+  shop: local.shop,
+  venue: local.venue,
   chef: photo('photo-1577219491135-ce391730fb2c', 1400),
   pasta: photo('photo-1621996346565-e3dbc646d9a9', 1400),
   dessert: photo('photo-1470124182917-cc6e71b22ecc', 1400),
@@ -35,13 +45,14 @@ export const IMAGES = {
   lobster: photo('photo-1519708227418-c8fd9a32b7a2', 1400),
   calamari: photo('photo-1599487488170-d11ec9c172f0', 1400),
   salad: photo('photo-1512621776951-a57141f2eefd', 1400),
-  family: photo('photo-1414235077428-338989a2e8c0', 1400),
+  family: local.venue,
   boat: photo('photo-1468581264429-2548ef9eb732', 1800),
-  night: photo('photo-1517248135467-4c7edcad34c4', 1800),
+  night: local.venue,
   terrace: photo('photo-1559339352-11d035aa65de', 1600),
 }
 
 export function img(src: string, w: number) {
+  if (!src.includes('images.unsplash.com')) return src
   const base = src.split('?')[0]
   return `${base}?auto=format&fit=crop&w=${w}&q=80`
 }
@@ -579,19 +590,15 @@ export const copy = {
 }
 
 export const GALLERY = [
-  { src: IMAGES.platter, alt: 'Catch on ice', cat: 'shop' },
+  { src: IMAGES.platter, alt: 'Seafood boat platter at the table', cat: 'dishes' },
+  { src: IMAGES.shop, alt: 'Daily catch on ice at the fish counter', cat: 'shop' },
+  { src: IMAGES.venue, alt: 'The dining room at Lakaaz Lamer', cat: 'venue' },
   { src: IMAGES.grill, alt: 'Fish off the grill', cat: 'dishes' },
   { src: IMAGES.prawns, alt: 'Garlic prawns', cat: 'dishes' },
   { src: IMAGES.oysters, alt: 'Oysters and lemon', cat: 'shop' },
-  { src: IMAGES.interior, alt: 'Plated service', cat: 'venue' },
-  { src: IMAGES.dining, alt: 'The dining room', cat: 'venue' },
-  { src: IMAGES.market, alt: 'Fish counter', cat: 'shop' },
-  { src: IMAGES.ice, alt: 'Seafood on ice', cat: 'shop' },
-  { src: IMAGES.chef, alt: 'The kitchen', cat: 'venue' },
   { src: IMAGES.tuna, alt: 'Tuna', cat: 'dishes' },
   { src: IMAGES.calamari, alt: 'Calamari', cat: 'dishes' },
-  { src: IMAGES.terrace, alt: 'Waterfront tables', cat: 'venue' },
-  { src: IMAGES.boat, alt: 'The sea', cat: 'venue' },
+  { src: IMAGES.chef, alt: 'The kitchen', cat: 'venue' },
   { src: IMAGES.cocktail, alt: 'House drinks', cat: 'dishes' },
   { src: IMAGES.dessert, alt: 'Dessert', cat: 'dishes' },
   { src: IMAGES.pasta, alt: 'Pasta', cat: 'dishes' },

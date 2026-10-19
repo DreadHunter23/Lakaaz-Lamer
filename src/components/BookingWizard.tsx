@@ -107,6 +107,7 @@ export function BookingWizard() {
     return (
       <div className="book">
         <Stepper step={3} done />
+        <div className="book__pane">
         <h2 className="book__title">{t(copy.reserve.sentTitle)}</h2>
         <p className="book__lede">{t(copy.reserve.sentBody)}</p>
         <article className="book__summary">
@@ -129,6 +130,7 @@ export function BookingWizard() {
             {t(copy.cta.call)}
           </a>
         </div>
+        </div>
       </div>
     )
   }
@@ -138,7 +140,7 @@ export function BookingWizard() {
       <p className="book__eyebrow">{t(copy.reserve.stepsIntro)}</p>
       <Stepper step={step} />
       {step === 1 ? (
-        <>
+        <div className="book__pane">
           <h2 className="book__title">{t(copy.reserve.whenTitle)}</h2>
           <article className="book__card book__card--guests">
             <h3>
@@ -234,11 +236,11 @@ export function BookingWizard() {
               <SlotGroup label={t(copy.reserve.dinnerSlot)} window="18:00 – 22:00" times={DINNER_SLOTS} available={slots.dinner} value={draft.time} onPick={(time) => patch({ time })} />
             </article>
           </div>
-        </>
+        </div>
       ) : null}
 
       {step === 2 ? (
-        <>
+        <div className="book__pane">
           <h2 className="book__title">{t(copy.reserve.detailsTitle)}</h2>
           <article className="book__card book__card--form">
             <h3>{t(copy.reserve.contactTitle)}</h3>
@@ -262,11 +264,11 @@ export function BookingWizard() {
               </label>
             </div>
           </article>
-        </>
+        </div>
       ) : null}
 
       {step === 3 ? (
-        <>
+        <div className="book__pane">
           <h2 className="book__title">{t(copy.reserve.confirmTitle)}</h2>
           <article className="book__summary">
             <h3>
@@ -275,7 +277,7 @@ export function BookingWizard() {
             </h3>
             <Summary draft={draft} />
           </article>
-        </>
+        </div>
       ) : null}
 
       <div className="book__nav">

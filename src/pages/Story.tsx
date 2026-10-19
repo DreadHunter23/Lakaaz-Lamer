@@ -1,4 +1,4 @@
-import { copy, IMAGES, img } from '../data/content'
+import { copy, IMAGES } from '../data/content'
 import { asset } from '../lib/asset'
 import { useLang } from '../context/Language'
 import { PageHero } from '../components/PageHero'
@@ -8,7 +8,7 @@ export function Story() {
   const { t } = useLang()
   return (
     <main>
-      <PageHero kicker={t(copy.story.kicker)} title={t(copy.story.title)} image={IMAGES.boat} />
+      <PageHero kicker={t(copy.story.kicker)} title={t(copy.story.title)} image={IMAGES.venue} focal="50% 40%" />
 
       <section className="section">
         <div className="wrap story-lead">
@@ -18,7 +18,7 @@ export function Story() {
         </div>
         <div className="wrap split">
           <Reveal>
-            <img className="story-photo" src={img(IMAGES.chef, 1100)} alt="The kitchen at work" />
+            <img className="story-photo" src={IMAGES.shop} alt="The fish counter at Lakaaz Lamer" />
           </Reveal>
           <Reveal delay={90}>
             <p className="kicker">Gian & Sons</p>

@@ -18,7 +18,7 @@ export function Gallery() {
 
   return (
     <main>
-      <PageHero kicker={t(copy.gallery.kicker)} title={t(copy.gallery.title)} sub={t(copy.gallery.sub)} image={IMAGES.interior} />
+      <PageHero kicker={t(copy.gallery.kicker)} title={t(copy.gallery.title)} sub={t(copy.gallery.sub)} image={IMAGES.venue} focal="50% 40%" />
       <section className="section">
         <div className="wrap">
           <div className="filters">

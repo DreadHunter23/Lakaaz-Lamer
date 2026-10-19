@@ -12,7 +12,7 @@ export function Home() {
   return (
     <main>
       <section className="hero">
-        <img className="hero__img" src={img(IMAGES.grill, 2200)} alt="Grilled fish at Lakaaz Lamer" />
+        <img className="hero__img" src={IMAGES.platter} alt="Seafood boat platter at Lakaaz Lamer" style={{ objectPosition: '50% 72%' }} />
         <div className="hero__shade" />
         <div className="wrap hero__content">
           <p className="kicker kicker--light">{t(copy.hero.kicker)}</p>
@@ -66,8 +66,8 @@ export function Home() {
           </Reveal>
           <Reveal delay={120}>
             <div className="photo-stack">
-              <img src={img(IMAGES.market, 900)} alt="Fresh catch at the counter" />
-              <img src={img(IMAGES.ice, 700)} alt="Seafood on ice" />
+              <img src={IMAGES.shop} alt="Fresh catch at the Lakaaz Lamer counter" />
+              <img src={IMAGES.venue} alt="The dining room at Lakaaz Lamer" />
             </div>
           </Reveal>
         </div>
@@ -94,7 +94,11 @@ export function Home() {
             {copy.featured.map((dish, i) => (
               <Reveal key={dish.name.en} delay={i * 90}>
                 <Link to="/menu" className="dish-card">
-                  <img src={img(IMAGES[dish.image], 1100)} alt={t(dish.name)} />
+                  <img
+                    src={img(IMAGES[dish.image], 1100)}
+                    alt={t(dish.name)}
+                    style={dish.image === 'platter' ? { objectPosition: '50% 70%' } : undefined}
+                  />
                   <div>
                     <small>{t(dish.meta)}</small>
                     <h3>{t(dish.name)}</h3>
@@ -111,7 +115,7 @@ export function Home() {
         <div className="wrap split split--reverse">
           <Reveal>
             <div className="tall-photo">
-              <img src={img(IMAGES.boat, 1200)} alt="The Mauritian sea" />
+              <img src={IMAGES.shop} alt="The fish shop at Lakaaz Lamer" />
             </div>
           </Reveal>
           <Reveal delay={100}>
@@ -134,7 +138,7 @@ export function Home() {
         <div className="visit__map">
           <iframe title="Lakaaz Lamer on Google Maps" src="https://maps.google.com/maps?q=Lifestyle%20Boulevard%20Sottise%20Rd%20Grand%20Baie%20Mauritius&z=16&output=embed" loading="lazy" />
         </div>
-        <div className="visit__card">
+        <Reveal className="visit__card">
           <p className="kicker">{t(copy.visit.kicker)}</p>
           <h2>{t(copy.visit.title)}</h2>
           <p>{t(copy.visit.body)}</p>
@@ -153,7 +157,7 @@ export function Home() {
               {t(copy.cta.directions)}
             </a>
           </div>
-        </div>
+        </Reveal>
       </section>
     </main>
   )

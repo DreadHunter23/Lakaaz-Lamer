@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react'
 import { copy, EXTRAS, IMAGES, MENU, type MenuTag } from '../data/content'
 import { useLang } from '../context/Language'
 import { PageHero } from '../components/PageHero'
+import { Reveal } from '../components/Reveal'
 
 const TAG_ORDER: MenuTag[] = ['veg', 'lunch', 'share', 'kids', 'mp']
 
@@ -13,7 +14,7 @@ export function Menu() {
 
   return (
     <main>
-      <PageHero kicker={t(copy.menuPage.kicker)} title={t(copy.menuPage.title)} sub={t(copy.menuPage.sub)} image={IMAGES.platter} />
+      <PageHero kicker={t(copy.menuPage.kicker)} title={t(copy.menuPage.title)} sub={t(copy.menuPage.sub)} image={IMAGES.platter} focal="50% 72%" />
 
       <section className="section">
         <div className="wrap">
@@ -33,31 +34,34 @@ export function Menu() {
           </div>
 
           <div className="menu-board">
-            {shown.map((category) => (
-              <section key={category.id} className="menu-cat" id={category.id}>
-                <h2>{t(category.title)}</h2>
-                <ul>
-                  {category.items.map((item) => (
-                    <li key={item.name.en}>
-                      <div>
-                        <h3>
-                          {t(item.name)}
-                          {item.tags?.map((tag) => (
-                            <em key={tag} className={`tag tag--${tag}`}>
-                              {t(copy.tags[tag])}
-                            </em>
-                          ))}
-                        </h3>
-                        <p>{t(item.desc)}</p>
-                      </div>
-                      <strong>{item.price}</strong>
-                    </li>
-                  ))}
-                </ul>
-              </section>
+            {shown.map((category, i) => (
+              <Reveal key={category.id} delay={Math.min(i * 70, 280)}>
+                <section className="menu-cat" id={category.id}>
+                  <h2>{t(category.title)}</h2>
+                  <ul>
+                    {category.items.map((item) => (
+                      <li key={item.name.en}>
+                        <div>
+                          <h3>
+                            {t(item.name)}
+                            {item.tags?.map((tag) => (
+                              <em key={tag} className={`tag tag--${tag}`}>
+                                {t(copy.tags[tag])}
+                              </em>
+                            ))}
+                          </h3>
+                          <p>{t(item.desc)}</p>
+                        </div>
+                        <strong>{item.price}</strong>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              </Reveal>
             ))}
           </div>
 
+          <Reveal>
           <aside className="extras">
             <h2>{t(copy.menuPage.extras)}</h2>
             <ul>
@@ -72,6 +76,7 @@ export function Menu() {
               {TAG_ORDER.map((tag) => t(copy.tags[tag])).join(' · ')}
             </p>
           </aside>
+          </Reveal>
         </div>
       </section>
     </main>
