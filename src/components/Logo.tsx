@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom'
+import { asset } from '../lib/asset'
 
 const SRC = {
-  gold: '/brand/logo-gold.png',
-  navy: '/brand/logo-navy.png',
-  white: '/brand/logo-white.png',
+  gold: asset('brand/logo-gold.png'),
+  navy: asset('brand/logo-navy.png'),
+  white: asset('brand/logo-white.png'),
 } as const
 
 export function Logo({

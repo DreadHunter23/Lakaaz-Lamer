@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { ADDRESS, copy, IMAGES, MAPS_URL, PHONE, PHONE_TEL, img } from '../data/content'
 import { useLang } from '../context/Language'
+import { asset } from '../lib/asset'
 import { getVenueStatus } from '../lib/hours'
 import { Reveal } from '../components/Reveal'
 
@@ -74,7 +75,7 @@ export function Home() {
           {copy.pillars.map((pillar, i) => (
             <Reveal key={pillar.title.en} delay={i * 80}>
               <article className="pillar">
-                <img className="pillar__icon" src={`/brand/icons/${pillar.icon}.png`} alt="" />
+                <img className="pillar__icon" src={asset(`brand/icons/${pillar.icon}.png`)} alt="" />
                 <h3>{t(pillar.title)}</h3>
                 <p>{t(pillar.body)}</p>
               </article>

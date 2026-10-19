@@ -1,4 +1,5 @@
 import { copy, IMAGES, img } from '../data/content'
+import { asset } from '../lib/asset'
 import { useLang } from '../context/Language'
 import { PageHero } from '../components/PageHero'
 import { Reveal } from '../components/Reveal'
@@ -55,7 +56,7 @@ export function Story() {
           {copy.pillars.map((pillar, i) => (
             <Reveal key={pillar.title.en} delay={i * 70}>
               <article className="pillar">
-                <img className="pillar__icon" src={`/brand/icons/${pillar.icon}.png`} alt="" />
+                <img className="pillar__icon" src={asset(`brand/icons/${pillar.icon}.png`)} alt="" />
                 <h3>{t(pillar.title)}</h3>
                 <p>{t(pillar.body)}</p>
               </article>
